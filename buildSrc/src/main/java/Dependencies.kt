@@ -12,16 +12,16 @@ object Releases {
     const val versionCode = 1
     const val versionName = "1.0"
 
-    const val buildToolsVersion = "29.0.0"
-    const val compileSdkVersion = 28
-    const val targetSdkVersion = 28
-    const val minSdkVersion = 17
+    const val buildToolsVersion = "30.0.3"
+    const val compileSdkVersion = 30
+    const val targetSdkVersion = 30
+    const val minSdkVersion = 21
 }
 
 object Version {
     //common
-    const val kotlin = "1.3.20"
-    const val gradle = "3.3.1"
+    const val kotlin = "1.6.0"
+    const val gradle = "7.0.3"
     const val material = "1.1.0-alpha05"
 
     //androidx
