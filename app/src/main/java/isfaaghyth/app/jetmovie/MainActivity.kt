@@ -2,6 +2,7 @@ package isfaaghyth.app.jetmovie
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayoutMediator
 import isfaaghyth.app.abstraction.ui.ViewPagerAdapter
 import isfaaghyth.app.jetmovie.databinding.ActivityMainBinding
 import isfaaghyth.app.movies.ui.MovieFragment
@@ -20,11 +21,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewPagerSetup() {
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(MovieFragment(), "Movie")
-        adapter.addFragment(TVShowFragment(), "TV")
-        binding.viewpagerMain.adapter = adapter
-        binding.tabLayoutMain?.setupWithViewPager(binding.viewpagerMain)
+        val adapter = ViewPagerAdapter(this)
+        val titles = arrayOf("Movie", "TV")
+        adapter.addFragment(MovieFragment())
+        adapter.addFragment(TVShowFragment())
+        with(binding) {
+            viewpagerMain.adapter = adapter
+            TabLayoutMediator(tabLayoutMain, viewpagerMain) { tab, position ->
+                tab.text = titles[position]
+            }.attach()
+        }
     }
 
 }

@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application>
-        <activity android:name=".ui.MovieDetailActivity"/>
+        <activity android:name=".ui.MovieDetailActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

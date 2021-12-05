@@ -1,6 +1,5 @@
 package isfaaghyth.app.network
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +11,6 @@ object Network {
     fun retrofitClient(url: String = BuildConfig.MOVIE_URL): Retrofit {
         return Retrofit.Builder()
             .baseUrl(url)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient())
             .build()

@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdkVersion Releases.compileSdkVersion
-    buildToolsVersion Releases.buildToolsVersion
 
     defaultConfig {
         applicationId ApplicationId.id

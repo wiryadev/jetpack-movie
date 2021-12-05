@@ -13,8 +13,8 @@ object Releases {
     const val versionName = "1.0"
 
     const val buildToolsVersion = "30.0.3"
-    const val compileSdkVersion = 30
-    const val targetSdkVersion = 30
+    const val compileSdkVersion = 31
+    const val targetSdkVersion = 31
     const val minSdkVersion = 21
 }
 
@@ -22,53 +22,56 @@ object Version {
     //common
     const val kotlin = "1.6.0"
     const val gradle = "7.0.3"
-    const val material = "1.1.0-alpha05"
+    const val material = "1.4.0"
 
     //androidx
-    const val constraintLayout = "1.1.2"
-    const val appCompat = "1.0.0"
-    const val ktx = "1.0.1"
+    const val constraintLayout = "2.1.2"
+    const val appCompat = "1.4.0"
+    const val cardView = "1.0.0"
+    const val coordinatorlayout = "1.1.0"
+    const val ktx = "1.7.0"
 
     //network
-    const val retrofit = "2.6.0"
-    const val rxretrofit = "2.4.0"
-    const val okhttpLogging = "3.11.0"
+    const val retrofit = "2.9.0"
+    const val rxretrofit = "2.9.0"
+    const val okhttpLogging = "4.9.3"
     const val mockWebServer = "3.11.0"
 
     //thread
-    const val coroutines = "1.3.0-M2"
-    const val coroutinesAdapter = "0.9.2"
+    const val coroutines = "1.5.2"
 
     //media
-    const val glide = "4.8.0"
+    const val glide = "4.12.0"
 
     //data
-    const val gson = "2.8.5"
+    const val gson = "2.8.9"
 
     //jetpack
-    const val archLifecycle = "2.0.0"
+    const val archLifecycle = "2.1.0"
     const val recyclerView = "1.0.0"
 
     //di
-    const val dagger = "2.21"
+    const val dagger = "2.40.4"
 
     //misc
     const val deeplink = "4.1.0"
 
     //testing
-    const val jUnit = "4.12"
+    const val jUnit = "4.13.2"
     const val testRunner = "1.1.0-alpha4"
     const val espresso = "3.1.1"
     const val mockito = "3.0.0"
     const val mockTestRunner = "0.3.1"
-    const val rules = "1.1.0"
-    const val ext = "1.0.0"
+    const val rules = "1.4.0"
+    const val ext = "1.1.3"
 }
 
 object Android {
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
     val appCompat = "androidx.appcompat:appcompat:${Version.appCompat}"
-    val cardView = "androidx.cardview:cardview:${Version.appCompat}"
+    val cardView = "androidx.cardview:cardview:${Version.cardView}"
+    val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
+    val coordinatorLayout = "androidx.coordinatorlayout:coordinatorlayout:${Version.coordinatorlayout}"
     val ktx = "androidx.core:core-ktx:${Version.ktx}"
     val gson = "com.google.code.gson:gson:${Version.gson}"
     val design = "com.google.android.material:material:${Version.material}"
@@ -93,7 +96,6 @@ object Retrofit {
     val scalarConverter = "com.squareup.retrofit2:converter-scalars:${Version.retrofit}"
     val rxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Version.rxretrofit}"
     val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Version.okhttpLogging}"
-    val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Version.coroutinesAdapter}"
     val mock = "com.squareup.retrofit2:retrofit-mock:${Version.retrofit}"
 }
 
@@ -131,7 +133,7 @@ object Testing {
     val core = "androidx.test:core:${Version.rules}"
 
     val extJunit = "androidx.test.ext:junit:${Version.ext}"
-    val extTruth = "androidx.test.ext:truth:${Version.ext}"
+    val extTruth = "androidx.test.ext:truth:${Version.rules}"
 }
 
 object Misc {

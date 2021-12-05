@@ -10,10 +10,9 @@ dependencies {
     implementation Retrofit.retrofit
     implementation Retrofit.gsonConverter
     implementation Retrofit.okHttpLogging
-    implementation Retrofit.coroutinesAdapter
 
     //coroutines
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
     implementation Coroutines.core
     implementation Coroutines.android
 

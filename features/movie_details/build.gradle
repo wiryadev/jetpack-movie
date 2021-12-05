@@ -5,13 +5,13 @@ dependencies {
     implementation Android.appCompat
     implementation Android.ktx
     implementation Android.constraintLayout
+    implementation Android.coordinatorLayout
     implementation Android.cardView
 
     //network
     implementation Retrofit.retrofit
     implementation Retrofit.gsonConverter
     implementation Retrofit.okHttpLogging
-    implementation Retrofit.coroutinesAdapter
 
     //jetpack
     implementation Jetpack.recyclerView

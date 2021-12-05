@@ -1,23 +1,19 @@
 package isfaaghyth.app.abstraction.ui
 
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
+class ViewPagerAdapter(activity: AppCompatActivity): FragmentStateAdapter(activity) {
 
     private val mFragmentList = arrayListOf<Fragment>()
-    private val mFragmentTitleList = arrayListOf<String>()
 
-    override fun getItem(position: Int): Fragment = mFragmentList[position]
+    override fun createFragment(position: Int): Fragment = mFragmentList[position]
 
-    override fun getCount(): Int = mFragmentList.size
+    override fun getItemCount(): Int = mFragmentList.size
 
-    override fun getPageTitle(position: Int): CharSequence? = mFragmentTitleList[position]
-
-    fun addFragment(fragment: Fragment, title: String) {
+    fun addFragment(fragment: Fragment) {
         mFragmentList.add(fragment)
-        mFragmentTitleList.add(title)
     }
 
 }
