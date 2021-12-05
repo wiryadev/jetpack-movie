@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-allopen'
 
@@ -45,6 +44,10 @@ android {
         unitTests.all {
             testLogging.events = ["passed", "skipped", "failed"]
         }
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 

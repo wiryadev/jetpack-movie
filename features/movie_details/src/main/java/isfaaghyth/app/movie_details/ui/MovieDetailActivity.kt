@@ -16,15 +16,14 @@ import isfaaghyth.app.abstraction.util.ext.toast
 import isfaaghyth.app.abstraction.util.state.LoaderState
 import isfaaghyth.app.data.entity.MovieDetail
 import isfaaghyth.app.data.mapper.MovieDetailMapper
-import isfaaghyth.app.movie_details.R
+import isfaaghyth.app.movie_details.databinding.ActivityMovieDetailBinding
 import isfaaghyth.app.movie_details.di.DaggerMovieDetailComponent
-import kotlinx.android.synthetic.main.activity_movie_detail.*
 import javax.inject.Inject
 
 @DeepLink(MOVIE_DETAIL)
-class MovieDetailActivity: BaseActivity() {
+class MovieDetailActivity: BaseActivity<ActivityMovieDetailBinding>() {
 
-    override fun contentView(): Int = R.layout.activity_movie_detail
+    override fun contentView() = ActivityMovieDetailBinding.inflate(layoutInflater)
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: MovieDetailViewModel
@@ -55,12 +54,12 @@ class MovieDetailActivity: BaseActivity() {
         viewModel.state.observe(this, Observer {
             when (it) {
                 is LoaderState.ShowLoading -> {
-                    rootView.hide()
-                    progressBar.show()
+                    binding.rootView.hide()
+                    binding.progressBar.show()
                 }
                 is LoaderState.HideLoading -> {
-                    rootView.show()
-                    progressBar.hide()
+                    binding.rootView.show()
+                    binding.progressBar.hide()
                 }
             }
         })
@@ -77,12 +76,14 @@ class MovieDetailActivity: BaseActivity() {
     }
 
     private fun showDetail(detail: MovieDetail) {
-        imgBanner.load(detail.backdropPath)
-        imgPoster.load(detail.posterPath)
-        txtMovieName.text = detail.title
-        txtContent.text = detail.overview
-        txtRating.text = detail.voteCount.toString()
-        txtVote.text = detail.voteAverage.toString()
+        binding.run {
+            imgBanner.load(detail.backdropPath)
+            imgPoster.load(detail.posterPath)
+            txtMovieName.text = detail.title
+            txtContent.text = detail.overview
+            txtRating.text = detail.voteCount.toString()
+            txtVote.text = detail.voteAverage.toString()
+        }
     }
 
     override fun initInjector() {

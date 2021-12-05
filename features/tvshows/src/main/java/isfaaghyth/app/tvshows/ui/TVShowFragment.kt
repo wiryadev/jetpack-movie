@@ -11,14 +11,14 @@ import androidx.lifecycle.ViewModelProviders
 import isfaaghyth.app.abstraction.util.ext.toast
 import isfaaghyth.app.abstraction.util.state.LoaderState
 import isfaaghyth.app.data.entity.TVShow
-import isfaaghyth.app.tvshows.R
+import isfaaghyth.app.tvshows.databinding.FragmentTvshowBinding
 import isfaaghyth.app.tvshows.di.DaggerTVShowComponent
-import kotlinx.android.synthetic.main.fragment_tvshow.*
 import javax.inject.Inject
 
 class TVShowFragment: Fragment() {
 
-    private fun contentView(): Int = R.layout.fragment_tvshow
+    private var _binding: FragmentTvshowBinding? = null
+    private val binding get() = _binding
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -30,7 +30,8 @@ class TVShowFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(contentView(), container, false)
+        _binding = FragmentTvshowBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +45,7 @@ class TVShowFragment: Fragment() {
             .of(this, viewModelFactory)
             .get(TVShowViewModel::class.java)
 
-        lstTvShows.adapter = adapter
+        binding?.lstTvShows?.adapter = adapter
 
         initObserver()
     }
@@ -77,6 +78,7 @@ class TVShowFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.clear()
+        _binding = null
     }
 
 }

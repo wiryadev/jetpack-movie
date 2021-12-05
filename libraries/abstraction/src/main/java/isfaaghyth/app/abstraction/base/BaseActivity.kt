@@ -2,17 +2,20 @@ package isfaaghyth.app.abstraction.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewbinding.ViewBinding
 import isfaaghyth.app.abstraction.util.view.KeyboardUtils
 import isfaaghyth.app.abstraction.util.ext.toast
 
-abstract class BaseActivity: AppCompatActivity(), BaseView {
+abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity(), BaseView {
+
+    lateinit var binding: VB
 
     /**
      * lifecycle method
      * @method contentView(): @return resLayoutId
      * @method initView()depe
      */
-    abstract fun contentView(): Int
+    abstract fun contentView(): VB
     abstract fun initView()
     abstract fun initInjector()
 
@@ -26,7 +29,8 @@ abstract class BaseActivity: AppCompatActivity(), BaseView {
         if (savedInstanceState != null) {
             this.savedInstanceState = savedInstanceState
         }
-        setContentView(contentView())
+        binding = contentView()
+        setContentView(binding.root)
         initInjector()
         initView()
     }

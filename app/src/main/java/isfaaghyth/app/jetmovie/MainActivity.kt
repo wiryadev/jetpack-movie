@@ -2,17 +2,19 @@ package isfaaghyth.app.jetmovie
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import isfaaghyth.app.abstraction.ui.ViewPagerAdapter
+import isfaaghyth.app.jetmovie.databinding.ActivityMainBinding
 import isfaaghyth.app.movies.ui.MovieFragment
 import isfaaghyth.app.tvshows.ui.TVShowFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewPagerSetup()
     }
@@ -21,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(MovieFragment(), "Movie")
         adapter.addFragment(TVShowFragment(), "TV")
-        viewpagerMain?.adapter = adapter
-        tabLayoutMain?.setupWithViewPager(viewpagerMain)
+        binding.viewpagerMain.adapter = adapter
+        binding.tabLayoutMain?.setupWithViewPager(binding.viewpagerMain)
     }
 
 }

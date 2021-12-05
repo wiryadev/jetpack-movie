@@ -11,14 +11,14 @@ import androidx.lifecycle.ViewModelProviders
 import isfaaghyth.app.abstraction.util.ext.toast
 import isfaaghyth.app.abstraction.util.state.LoaderState
 import isfaaghyth.app.data.entity.Movie
-import isfaaghyth.app.movies.R
+import isfaaghyth.app.movies.databinding.FragmentMovieBinding
 import isfaaghyth.app.movies.di.DaggerMovieComponent
-import kotlinx.android.synthetic.main.fragment_movie.*
 import javax.inject.Inject
 
 class MovieFragment: Fragment() {
 
-    private fun contentView(): Int = R.layout.fragment_movie
+    private var _binding: FragmentMovieBinding? = null
+    private val binding get() = _binding
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: MovieViewModel
@@ -29,7 +29,8 @@ class MovieFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(contentView(), container, false)
+        _binding = FragmentMovieBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class MovieFragment: Fragment() {
             .of(this, viewModelFactory)
             .get(MovieViewModel::class.java)
 
-        lstMovies.adapter = adapter
+        binding?.lstMovies?.adapter = adapter
 
         initObserver()
     }
@@ -76,6 +77,7 @@ class MovieFragment: Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.clear()
+        _binding = null
     }
 
 }
