@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import isfaaghyth.app.abstraction.util.ext.toast
 import isfaaghyth.app.abstraction.util.state.LoaderState
 import isfaaghyth.app.data.entity.TVShow
@@ -41,9 +39,7 @@ class TVShowFragment: Fragment() {
     }
 
     private fun initView() {
-        viewModel = ViewModelProviders
-            .of(this, viewModelFactory)
-            .get(TVShowViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[TVShowViewModel::class.java]
 
         binding?.lstTvShows?.adapter = adapter
 

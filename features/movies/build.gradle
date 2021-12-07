@@ -12,13 +12,13 @@ dependencies {
     implementation Retrofit.okHttpLogging
 
     //coroutines
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
     implementation Coroutines.core
     implementation Coroutines.android
 
     //jetpack
     implementation Jetpack.recyclerView
-    implementation Jetpack.lifecycle
+    implementation Jetpack.viewmodel
+    implementation Jetpack.livedata
     kapt Jetpack.lifecycleCompiler
 
     //modules

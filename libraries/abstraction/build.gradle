@@ -13,7 +13,8 @@ dependencies {
 
     //coroutines
     implementation Coroutines.core
-    implementation Jetpack.lifecycle
+    implementation Jetpack.viewmodel
+    implementation Jetpack.livedata
 
     //glide
     implementation Glide.glide

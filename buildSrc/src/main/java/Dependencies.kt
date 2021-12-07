@@ -35,7 +35,7 @@ object Version {
     const val retrofit = "2.9.0"
     const val rxretrofit = "2.9.0"
     const val okhttpLogging = "4.9.3"
-    const val mockWebServer = "3.11.0"
+    const val mockWebServer = "4.9.3"
 
     //thread
     const val coroutines = "1.5.2"
@@ -47,8 +47,9 @@ object Version {
     const val gson = "2.8.9"
 
     //jetpack
+    const val lifecycle = "2.4.0"
     const val archLifecycle = "2.1.0"
-    const val recyclerView = "1.0.0"
+    const val recyclerView = "1.2.1"
 
     //di
     const val dagger = "2.40.4"
@@ -58,8 +59,8 @@ object Version {
 
     //testing
     const val jUnit = "4.13.2"
-    const val testRunner = "1.1.0-alpha4"
-    const val espresso = "3.1.1"
+    const val testRunner = "1.4.0"
+    const val espresso = "3.4.0"
     const val mockito = "3.0.0"
     const val mockTestRunner = "0.3.1"
     const val rules = "1.4.0"
@@ -78,8 +79,9 @@ object Android {
 }
 
 object Jetpack {
-    val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Version.archLifecycle}"
-    val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Version.archLifecycle}"
+    val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
+    val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifecycle}"
+    val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
     val recyclerView = "androidx.recyclerview:recyclerview:${Version.recyclerView}"
 }
 

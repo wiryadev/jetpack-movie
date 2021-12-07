@@ -1,9 +1,7 @@
 package isfaaghyth.app.movie_details.ui
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.airbnb.deeplinkdispatch.DeepLink
 import isfaaghyth.app.abstraction.base.BaseActivity
 import isfaaghyth.app.abstraction.util.AppLink.MovieDetail.MOVIE_DETAIL
@@ -29,9 +27,7 @@ class MovieDetailActivity: BaseActivity<ActivityMovieDetailBinding>() {
     private lateinit var viewModel: MovieDetailViewModel
 
     override fun initView() {
-        viewModel = ViewModelProviders
-            .of(this, viewModelFactory)
-            .get(MovieDetailViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MovieDetailViewModel::class.java]
 
         initParam()
         initObservable()

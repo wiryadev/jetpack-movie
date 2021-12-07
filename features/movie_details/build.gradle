@@ -15,7 +15,8 @@ dependencies {
 
     //jetpack
     implementation Jetpack.recyclerView
-    implementation Jetpack.lifecycle
+    implementation Jetpack.viewmodel
+    implementation Jetpack.livedata
     kapt Jetpack.lifecycleCompiler
 
     //coroutines
