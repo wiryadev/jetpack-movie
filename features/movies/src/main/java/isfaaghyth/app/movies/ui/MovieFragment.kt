@@ -50,21 +50,21 @@ class MovieFragment: Fragment() {
     }
 
     private fun initObserver() {
-        viewModel.state.observe(this, Observer { state ->
+        viewModel.state.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is LoaderState.ShowLoading -> toast("loading")
                 is LoaderState.HideLoading -> toast("complete")
             }
-        })
+        }
 
-        viewModel.result.observe(this, Observer { movies ->
+        viewModel.result.observe(viewLifecycleOwner) { movies ->
             movieData.addAll(movies)
             adapter.notifyDataSetChanged()
-        })
+        }
 
-        viewModel.error.observe(this, Observer { error ->
+        viewModel.error.observe(viewLifecycleOwner) { error ->
             toast(error)
-        })
+        }
     }
 
     private fun initInjector() {

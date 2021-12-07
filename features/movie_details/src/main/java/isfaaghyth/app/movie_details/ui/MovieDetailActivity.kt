@@ -51,7 +51,7 @@ class MovieDetailActivity: BaseActivity<ActivityMovieDetailBinding>() {
     }
 
     private fun initObservable() {
-        viewModel.state.observe(this, Observer {
+        viewModel.state.observe(this) {
             when (it) {
                 is LoaderState.ShowLoading -> {
                     binding.rootView.hide()
@@ -62,17 +62,17 @@ class MovieDetailActivity: BaseActivity<ActivityMovieDetailBinding>() {
                     binding.progressBar.hide()
                 }
             }
-        })
+        }
 
-        viewModel.movieDetail.observe(this, Observer { movie ->
+        viewModel.movieDetail.observe(this) { movie ->
             showDetail(MovieDetailMapper.mapFromMovie(movie))
-        })
+        }
 
-        viewModel.tvDetail.observe(this, Observer { tv ->
+        viewModel.tvDetail.observe(this) { tv ->
             showDetail(MovieDetailMapper.mapFromTVShow(tv))
-        })
+        }
 
-        viewModel.error.observe(this, Observer { toast(it) })
+        viewModel.error.observe(this) { toast(it) }
     }
 
     private fun showDetail(detail: MovieDetail) {
