@@ -4,12 +4,13 @@ import isfaaghyth.app.data.entity.Movie
 import isfaaghyth.app.data.entity.Movies
 import isfaaghyth.app.data.routes.NetworkServices
 import kotlinx.coroutines.runBlocking
-import okhttp3.MediaType
-import okhttp3.ResponseBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
 import retrofit2.Response
 
 class MovieRepositoryTest {
@@ -46,7 +47,7 @@ class MovieRepositoryTest {
 
     @Test fun `should get null and error`() = runBlocking {
         `when`(services.getPopularMovie()).thenReturn(
-            Response.error(401, ResponseBody.create(MediaType.parse("application/json"), ""))
+            Response.error(401, "".toResponseBody("application/json".toMediaTypeOrNull()))
         )
         val repo = repository.getPopularMovie()
 

@@ -7,19 +7,20 @@ import isfaaghyth.app.abstraction.util.thread.TestSchedulerProvider
 import isfaaghyth.app.data.entity.Movie
 import isfaaghyth.app.data.entity.Movies
 import isfaaghyth.app.movies.domain.MovieUseCase
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.*
+import org.junit.Assert.assertEquals
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 
+@ExperimentalCoroutinesApi
 class MovieViewModelTest {
 
     @get:Rule val instantExecutorRule = InstantTaskExecutorRule()

@@ -49,7 +49,7 @@ class MovieViewModel @Inject constructor(
                 _state.value = LoaderState.HideLoading
                 when (result) {
                     is ResultState.Success -> _result.postValue(result.data.resultsIntent)
-                    is ResultState.Error -> _error.postValue(result.error)
+                    is ResultState.Error -> _error.postValue(result.error.toString())
                 }
             }
         }

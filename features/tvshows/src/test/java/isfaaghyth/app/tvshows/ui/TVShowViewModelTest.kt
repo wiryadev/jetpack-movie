@@ -63,7 +63,7 @@ class TVShowViewModelTest {
 
     @Test fun `should return a response of tvShows data`() = runBlocking {
         val returnValue = ResultState.Success(moviesData)
-        Mockito.`when`(useCase.getPopularTvShow()).thenReturn(returnValue)
+        `when`(useCase.getPopularTvShow()).thenReturn(returnValue)
         viewModel.getPopularTvShow()
         verify(result, atLeastOnce()).onChanged(argResultCaptor.capture())
         assertEquals(returnValue.data.resultsIntent, argResultCaptor.allValues.first())
@@ -72,7 +72,7 @@ class TVShowViewModelTest {
 
     @Test fun `should return an error without api key`() = runBlocking {
         val returnValue = ResultState.Error("error")
-        Mockito.`when`(useCase.getPopularTvShow()).thenReturn(returnValue)
+        `when`(useCase.getPopularTvShow()).thenReturn(returnValue)
         viewModel.getPopularTvShow()
         verify(error, atLeastOnce()).onChanged(argErrorCaptor.capture())
         assertEquals(returnValue.error, argErrorCaptor.allValues.first())

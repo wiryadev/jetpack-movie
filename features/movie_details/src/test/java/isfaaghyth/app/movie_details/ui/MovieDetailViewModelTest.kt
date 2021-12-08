@@ -8,6 +8,7 @@ import isfaaghyth.app.data.entity.Movie
 import isfaaghyth.app.data.entity.TVShow
 import isfaaghyth.app.movie_details.domain.MovieDetailUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
@@ -21,6 +22,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 
+@ExperimentalCoroutinesApi
 class MovieDetailViewModelTest {
 
     @get:Rule val instantExecutorRule = InstantTaskExecutorRule()

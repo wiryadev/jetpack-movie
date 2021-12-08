@@ -4,8 +4,8 @@ import isfaaghyth.app.data.entity.Movie
 import isfaaghyth.app.data.entity.TVShow
 import isfaaghyth.app.data.routes.NetworkServices
 import kotlinx.coroutines.runBlocking
-import okhttp3.MediaType
-import okhttp3.ResponseBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -68,7 +68,7 @@ class MovieDetailRepositoryTest {
     @Test fun `should get null when getting tv show detail and error`() = runBlocking {
         Mockito.`when`(services.getTvDetail(movieId))
             .thenReturn(
-                Response.error(401, ResponseBody.create(MediaType.parse("application/json"), ""))
+                Response.error(401, "".toResponseBody("application/json".toMediaTypeOrNull()))
             )
         val repo = repository.getTVShowDetail(movieId)
         assert(repo.body() === null)
@@ -77,7 +77,7 @@ class MovieDetailRepositoryTest {
     @Test fun `should get null when getting movie detail and error`() = runBlocking {
         Mockito.`when`(services.getMovieDetail(movieId))
             .thenReturn(
-                Response.error(401, ResponseBody.create(MediaType.parse("application/json"), ""))
+                Response.error(401, "".toResponseBody("application/json".toMediaTypeOrNull()))
             )
         val repo = repository.getMovieDetail(movieId)
         assert(repo.body() === null)

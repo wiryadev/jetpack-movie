@@ -7,7 +7,7 @@ import isfaaghyth.app.data.entity.Movie
 import isfaaghyth.app.data.entity.Movies
 import isfaaghyth.app.movies.InstantTaskExecutorRuleSpek
 import isfaaghyth.app.movies.domain.MovieUseCase
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.junit.Assert.assertEquals
 import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
@@ -17,6 +17,8 @@ import org.mockito.Mockito.verify
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
 
+@ObsoleteCoroutinesApi
+@ExperimentalCoroutinesApi
 @RunWith(JUnitPlatform::class)
 class MovieViewModelSpekTest: Spek({
 
@@ -54,8 +56,10 @@ class MovieViewModelSpekTest: Spek({
 
             When("getting popular movies") {
                 runBlocking {
-                    Mockito.`when`(useCase.getPopularMovie()).thenReturn(returnValue)
-                    viewModel.getPopularMovie()
+                    launch(Dispatchers.Main) {
+                        Mockito.`when`(useCase.getPopularMovie()).thenReturn(returnValue)
+                        viewModel.getPopularMovie()
+                    }
                 }
             }
 

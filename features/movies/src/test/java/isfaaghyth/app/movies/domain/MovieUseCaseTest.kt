@@ -5,8 +5,8 @@ import isfaaghyth.app.data.entity.Movie
 import isfaaghyth.app.data.entity.Movies
 import isfaaghyth.app.data.repository.movie.MovieRepository
 import kotlinx.coroutines.runBlocking
-import okhttp3.MediaType
-import okhttp3.ResponseBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
@@ -51,7 +51,7 @@ class MovieUseCaseTest {
         val result = runBlocking {
             `when`(repository.getPopularMovie())
                 .thenReturn(
-                    Response.error(401, ResponseBody.create(MediaType.parse("application/json"), ""))
+                    Response.error(401, "".toResponseBody("application/json".toMediaTypeOrNull()))
                 )
             useCase.getPopularMovie()
         }

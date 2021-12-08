@@ -61,7 +61,7 @@ object Version {
     const val jUnit = "4.13.2"
     const val testRunner = "1.4.0"
     const val espresso = "3.4.0"
-    const val mockito = "3.0.0"
+    const val mockito = "4.1.0"
     const val mockTestRunner = "0.3.1"
     const val rules = "1.4.0"
     const val ext = "1.1.3"

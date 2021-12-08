@@ -1,11 +1,11 @@
 package isfaaghyth.app.data.repository.tvshow
 
-import isfaaghyth.app.data.entity.TVShows
 import isfaaghyth.app.data.entity.TVShow
+import isfaaghyth.app.data.entity.TVShows
 import isfaaghyth.app.data.routes.NetworkServices
 import kotlinx.coroutines.runBlocking
-import okhttp3.MediaType
-import okhttp3.ResponseBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -46,7 +46,7 @@ class TVShowRepositoryTest {
 
     @Test fun `should get null and error`() = runBlocking {
         Mockito.`when`(services.getPopularTVShow()).thenReturn(
-            Response.error(401, ResponseBody.create(MediaType.parse("application/json"), ""))
+            Response.error(401, "".toResponseBody("application/json".toMediaTypeOrNull()))
         )
         val repo = repository.getPopularTVShow()
 

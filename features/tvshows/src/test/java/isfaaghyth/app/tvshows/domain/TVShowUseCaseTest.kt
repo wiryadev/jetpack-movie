@@ -5,8 +5,8 @@ import isfaaghyth.app.data.entity.TVShow
 import isfaaghyth.app.data.entity.TVShows
 import isfaaghyth.app.data.repository.tvshow.TVShowRepository
 import kotlinx.coroutines.runBlocking
-import okhttp3.MediaType
-import okhttp3.ResponseBody
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
@@ -53,7 +53,7 @@ class TVShowUseCaseTest {
         val result = runBlocking {
             `when`(repository.getPopularTVShow())
                 .thenReturn(
-                    Response.error(401, ResponseBody.create(MediaType.parse("application/json"), ""))
+                    Response.error(401, "".toResponseBody("application/json".toMediaTypeOrNull()))
                 )
             usecase.getPopularTvShow()
         }
